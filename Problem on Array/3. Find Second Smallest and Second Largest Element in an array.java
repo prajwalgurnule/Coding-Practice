@@ -42,5 +42,36 @@ class Main{
     }
     
 // Optimal Approach
-
+    
+    public static void main(String[] args) {
+        int[] arr = {2, 5 , 1, 6, 9, 8};
+        Arrays.sort(arr);
+        int n = arr.length;
+        System.out.println(" Second Smallest : " + secondSmallest(arr, n));
+        System.out.println(" Second Largest : " + secondLargest(arr, n));
+    }
+    
+    public static int secondSmallest(int arr[], int n){
+        if (n < 2) return -1;   // for array element less than 2
+        int sm = Integer.MAX_VALUE, ssm = Integer.MAX_VALUE;    // sm = small, ssm = second small
+        for (int i = 0 ; i < n; i++){
+            if (arr[i] < sm){
+                ssm = sm;
+                sm = arr[i];
+            }else if( arr[i] < ssm && arr[i] != sm) ssm = arr[i];
+        }
+        return ssm;
+    }
+    
+    public static int secondLargest(int arr[], int n){
+        if (n < 2) return -1;   // for array element less than 2
+        int l = Integer.MIN_VALUE, sl = Integer.MIN_VALUE;    // l = large, sl = second large
+        for (int i = 0 ; i < n; i++){
+            if (arr[i] > l){
+                sl = l;
+                l = arr[i];
+            }else if( arr[i] > sl && arr[i] != l) sl = arr[i];
+        }
+        return sl;
+    }
 }
