@@ -1,0 +1,19 @@
+// Problem Statement: Given an unsorted array, find the median of the given array.
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        int[] arr = {6, 4, 2, 7, 1, 9};
+        int n = arr.length;
+        System.out.println("Median - ");
+        median(arr, n);
+    }
+    
+    public static void median(int[] arr, int n){
+        Arrays.sort(arr);
+        if (n % 2 ==0){
+            System.out.println((double) (arr[(n / 2) - 1] + arr[n/2]) / 2);
+        } else { 
+            System.out.println(arr[n/2]); 
+        }
+    }
+}
