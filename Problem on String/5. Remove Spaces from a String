@@ -1,0 +1,18 @@
+class Main{
+    public static void main(String[] args){
+        String str = " My  Name is \t  Prajwal Gurnule";
+        String output = removespace(str);
+        System.out.println(output);
+    }
+    
+    public static String removespace(String str){
+        StringBuilder result = new StringBuilder();
+        for (char c : str.toCharArray()){
+            if (c != ' ' && c != '\t' && c != '\n') {
+                // Append it to the result
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+}
