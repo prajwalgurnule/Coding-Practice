@@ -1,1 +1,21 @@
-
+class Main {
+    public static void main(String[] args) {
+        int num = 42824;
+        if (palindrome(num)){
+            System.out.println(num+" is a Palindrome");
+        } else {
+            System.out.println(num +" is not a Palindrome");
+        }
+    }
+    
+    public static boolean palindrome(int num){
+        int RevNum = 0;
+        int dup = num;
+        while (num > 0){
+            int last = num%10;
+            RevNum = (RevNum * 10) + last;
+            num = num/10;
+        }
+        return RevNum == dup;
+    }
+}
