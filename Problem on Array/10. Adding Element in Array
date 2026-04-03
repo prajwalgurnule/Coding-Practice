@@ -1,0 +1,41 @@
+// Insert in Begining of Array
+
+import java.util.*;
+
+class Main{
+  public static void main(String[] args){
+    int[] arr = {2, 3, 4, 5, 6,};
+    int x = 8;
+    arr = insertBeg(arr, x);
+    for (int num : arr) System.out.print(num + " ");
+  }
+  
+  public static int[] insertBeg(int[] arr, int x){
+    int[] n = new int[arr.length + 1];
+    n[0] = x;
+    for (int i=0; i< arr.length; i++){
+      n[i+1] = arr[i];
+    }
+    return n;
+  }
+}
+
+// Insert at End of Array
+
+class Main{
+  public static void main(String[] args){
+    int[] arr = {2, 3, 4, 5, 6,};
+    int x = 8;
+    arr = insertEnd(arr, x);
+    for (int num : arr) System.out.print(num + " ");
+  }
+  
+  public static int[] insertEnd(int[] arr, int x){
+    int[] n = new int[arr.length + 1];
+    for (int i=0; i< arr.length; i++){
+      n[i] = arr[i];
+    }
+    n[arr.length] = x;
+    return n;
+  }
+}
