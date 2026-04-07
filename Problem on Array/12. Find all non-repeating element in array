@@ -1,0 +1,41 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 2, 3, 4, 4, 5, 2};  // Example input
+        findRepeatingElements(arr);  // Call function to find repeating elements
+    }
+    
+    // Brute Force
+    public static void findRepeatingElements(int arr[]){
+        System.out.println("The Non-repeating Element are: ");
+        for (int i=0; i<arr.length; i++){
+            boolean check = false;
+            for (int j=0; j<arr.length; j++){
+                if(i!=j && arr[i] == arr[j]){
+                    check = true;
+                    break;
+                }
+            }
+            
+            if(!check) System.out.print(arr[i]+" ");
+        }
+    }
+    
+    // Optimal Approach
+    public static void findRepeatingElements(int arr[]){
+        Map<Integer,Integer> element = new HashMap<>();
+        
+        for (int i:arr){
+            element.put(i, element.getOrDefault(i,0)+1);
+        }
+        
+        System.out.println("The Non-repeating element are: ");
+        for(Map.Entry<Integer, Integer> entry : element.entrySet()){
+            if (entry.getValue() == 1){
+                System.out.print(entry.getKey() + " ");
+            }
+        }
+    }
+}
