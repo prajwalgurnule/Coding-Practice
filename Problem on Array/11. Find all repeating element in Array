@@ -1,0 +1,58 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 2, 3, 4, 4, 5, 2};  // Example input
+        findRepeatingElements(arr);  // Call function to find repeating elements
+    }
+    
+    // Brute Force
+    public static void findRepeatingElements(int arr[]){
+        int n = arr.length;
+        int count = 0;
+        int[] dup = new int[n];
+        
+        for (int i=0; i<n; i++){
+            for (int j=i+1; j<n; j++){
+                if (arr[i] == arr[j]) {
+                    dup[count++] = arr[i];
+                }
+            }
+        }
+        
+        System.out.println("The repeating element are -");
+        for (int i=0; i<count; i++){
+            if (i==0 || dup[i] != dup[i-1]) System.out.print(dup[i]+" ");
+        }
+    }
+    
+    // Better Approach
+    public static void findRepeatingElements(int arr[]){
+        Arrays.sort(arr);  // Sort the array to easily find duplicates
+        
+        System.out.print("The repeating elements are: ");
+        for (int i = 0; i < arr.length - 1; i++) {
+            // If current element is equal to next element, it's a repeating element
+            if (arr[i] == arr[i + 1]) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+    
+    // Optimal Approach
+    public static void findRepeatingElements(int arr[]){
+        Map<Integer,Integer> element = new HashMap<>();
+        
+        for (int i:arr){
+            element.put(i, element.getOrDefault(i,0)+1);
+        }
+        
+        System.out.println("The repeating element are: ");
+        for(Map.Entry<Integer, Integer> entry : element.entrySet()){
+            if (entry.getValue() > 1){
+                System.out.print(entry.getKey() + " ");
+            }
+        }
+    }
+}
