@@ -1,0 +1,47 @@
+import java.util.*;
+class Main {
+    // Brute Force
+    public static void main(String[] args) {
+        int[] arr = {20, 15, 26, 2, 98, 6};
+        List<Integer> result = replacewithrank(arr);
+        for (int n : result){
+            System.out.print(n+" ");
+        }
+    }
+    
+    public static List<Integer> replacewithrank(int[] arr){
+        List<Integer> ranklist = new ArrayList<>();
+        for (int i=0; i<arr.length; i++){
+            Set<Integer> smaller = new HashSet<>();
+            for (int j=0; j<arr.length; j++){
+                if (arr[j] < arr[i]) smaller.add(arr[j]);
+            }
+            int rank = smaller.size() + 1;
+            ranklist.add(rank);
+        }
+        return ranklist;
+    }
+   
+   // Optimal Approach 
+    public static void main(String[] args){
+        int arr[] = {20, 15, 26, 2, 98, 6};
+        int res[] = replacewithrank(arr);
+        for (int n : res) System.out.print(n+" ");
+    }
+    
+    public static int[] replacewithrank(int[] arr){
+        int[] sortedArray = arr.clone();
+        Arrays.sort(sortedArray);
+        HashMap<Integer, Integer> rankMap = new HashMap<>();
+        int rank = 1;
+        for (int num : sortedArray){
+            if(!rankMap.containsKey(num)){
+                rankMap.put(num, rank);
+                rank ++;
+            }
+        }
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) result[i] = rankMap.get(arr[i]);
+        return result;
+    }
+}
