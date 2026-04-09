@@ -1,0 +1,21 @@
+// Linear Search
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+       int[] arr = {6,7,9,5,3,10};
+       System.out.print("Your Array - ");
+       for (int i=0; i<arr.length; i++) System.out.print(arr[i]+" ");
+       System.out.println();
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Enter Element to search - ");
+       int key = sc.nextInt();
+       int ans = -1;
+       for (int i=0; i<arr.length; i++){
+           if (arr[i] == key){
+               ans = i;
+               break;
+           }
+       }
+       System.out.println("The Element is found at "+ans+" index");
+    }
+}
