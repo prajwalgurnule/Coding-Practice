@@ -1,0 +1,13 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int hours = sc.nextInt();
+        if (hours <= 2) 
+            System.out.println(100);
+        else if (hours <= 5)
+            System.out.println(50);
+        else
+            System.out.println(20);
+    }
+}
